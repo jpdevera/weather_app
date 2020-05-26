@@ -12,9 +12,7 @@
     <button type="button" id="btn-search" class="btn btn-primary">Search</button>
   </form>
 </br>
-  <div class="form-group">
-
-  </div>
+  
   <div class="row travel-informations">
 
   </div>
