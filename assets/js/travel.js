@@ -1,8 +1,11 @@
 /**
 * When page is ready
+* load all events here
 */
 $(document).ready(function(){
 	const base_path = $("#base_url").val();
+
+	//Submit form
 	$("#form-travel").off('submit.add').on('submit.add', function(e){
 		e.preventDefault();
 		var $url = `${base_path}controller/services.php`;
@@ -31,6 +34,7 @@ $(document).ready(function(){
 	    });
 	});
 
+	//btn search click
 	$(".main-travel #btn-search").on('click', function(e){
 		$("#form-travel").submit();
 	});
@@ -40,6 +44,8 @@ $(document).ready(function(){
 
 /**
 * Set the weather information here
+* contruct html from the search city 
+* @param json data from api response
 */
 setLocationInformation = (data) =>
 {

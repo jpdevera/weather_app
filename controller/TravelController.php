@@ -87,7 +87,7 @@ class TravelController extends Services{
                 echo json_encode($response);
             }
         } catch (Exception $e) {
-            throw new Exception($e);
+            echo json_encode(array('meta'=>array('code'=>0, 'error'=>$e->getMessage())));
         }
     }
    

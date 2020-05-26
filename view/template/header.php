@@ -9,6 +9,7 @@ $protocol  = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'ht
 // Set base url and base index
 $base_url = $protocol.$hostName.$pathInfo['dirname']."/";
 $base_url_index = $base_url.'index.php?';
+$title = 'Weather Application';
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +33,6 @@ $base_url_index = $base_url.'index.php?';
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo $base_url ?>bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo $base_url ?>bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.min.css" rel="stylesheet">
     <link href="<?php echo $base_url ?>assets/css/style.css" rel="stylesheet">
   </head>
 

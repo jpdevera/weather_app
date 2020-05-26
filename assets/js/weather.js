@@ -1,8 +1,11 @@
 /**
 * When page is ready
+* load all events here
 */
 $(document).ready(function(){
 	const base_path = $("#base_url").val();
+
+	// submit form
 	$("#form-weather").off('submit.add').on('submit.add', function(e){
 		e.preventDefault();
 		var $url = `${base_path}controller/services.php`;
@@ -33,6 +36,7 @@ $(document).ready(function(){
 	    });
 	});
 
+	// btn-search click
 	$(".main-weather #btn-search").on('click', function(e){
 		$("#form-weather").submit();
 	});
@@ -41,7 +45,9 @@ $(document).ready(function(){
 
 
 /**
-* Set the weather populate here
+* Set the weather information here
+* contruct html from the search city 
+* @param json data from api response
 */
 setWeatherInformation = (data) =>
 {
@@ -82,6 +88,11 @@ setWeatherInformation = (data) =>
 	}
 }
 
+/**
+* Convert the military time into 12hours format
+* @param time formatted string 
+* @return eg. 1:00 AM
+*/
 convertTime = (time) =>
 {
 	let timeString = time;
@@ -91,6 +102,11 @@ convertTime = (time) =>
 	return h + timeString.substr(2, 3) + ampm;
 }
 
+/**
+* Convert the string into Upper Case Words
+* @param string - string to convert
+* @return eg. Hello World
+*/
 upperCaseWords = (str) => {
   return (str + '')
     .replace(/^(.)|\s+(.)/g, function ($1) {
@@ -98,6 +114,11 @@ upperCaseWords = (str) => {
     });
 }
 
+/**
+* Convert the string date into date formatted
+* @param date to convert
+* @return eg. Jan 01, 2020
+*/
 convertDate = (date) => 
 {
 	const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];

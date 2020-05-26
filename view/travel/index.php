@@ -11,7 +11,7 @@
     <input type="hidden" name="form-submitted" value="1">
     <button type="button" id="btn-search" class="btn btn-primary">Search</button>
   </form>
-  </br>
+</br>
   <div class="form-group">
 
   </div>
@@ -22,18 +22,3 @@
 
       
 <?php include 'view/template/footer.php'; ?>
-<style type="text/css">
-.weather_now {
-    display: inline-block;
-    background: #eee;
-    border-top: solid 4px #09c;
-    width: 100%;
-    margin: 0 0 40px 0;
-    padding: 5px;
-}
-
-#weather-description{
-	text-transform: capitalize;
-}
-
-</style>

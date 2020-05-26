@@ -82,7 +82,7 @@ class WeatherController extends Services{
                 echo json_encode($response);
             }
         } catch (Exception $e) {
-            
+            echo json_encode(array('message'=>$e->getMessage()));
         }
     }
     

@@ -1,6 +1,6 @@
 <?php include 'view/template/header.php'; ?>
 
-
+<!-- For improvement home page, but for now -->
 <div class="col-sm-9 col-md-9 main-travel" style="margin-top:80px;">
   <h2 class="sub-header">Nearby Locations and Weather Information</h2>
     <div class="form-group">
