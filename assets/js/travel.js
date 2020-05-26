@@ -73,6 +73,10 @@ setLocationInformation = async (result) =>
 		let venues = data.response.venues;
 		for (var i = 0; i < venues.length; i++) {
 			let icon = "";
+
+			if( data.response.venues[i].categories[0] == undefined ){
+				continue;
+			}
 			// check if icon already loaded
 			if($.isEmptyObject(venues[i].categories[0].icon) != true){
 				icon = `${venues[i].categories[0].icon.prefix}32${venues[i].categories[0].icon.suffix}`;
