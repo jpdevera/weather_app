@@ -41,26 +41,49 @@ $(document).ready(function(){
 
 });
 
+// loading indicator
+var $body = $("body");
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading please wait...");    },
+     ajaxStop: function() { $body.removeClass("loading please wait..."); }    
+});
+
 
 /**
 * Set the weather information here
 * contruct html from the search city 
 * @param json data from api response
 */
-setLocationInformation = (data) =>
+setLocationInformation = async (result) =>
 {
 	// icon image size (32, 44, 64, and 88)
+	let promise = new Promise(function(resolved, rejected){
+		if( result ){
+			resolved(result)
+		}else{
+			rejected(result);
+		}
+	});
+
+	// set the data
+	let data = await promise;
 	$(".travel-informations").html("");
 	let html = "";
 	if( data ){
 		let venues = data.response.venues;
 		for (var i = 0; i < venues.length; i++) {
+			let icon = "";
+			// check if icon already loaded
+			if($.isEmptyObject(venues[i].categories[0].icon) != true){
+				icon = `${venues[i].categories[0].icon.prefix}32${venues[i].categories[0].icon.suffix}`;
+			}
+
 			html +=  `
 			  	<div class="col-sm-3">
 		         	<div class="report-container">
 				        <h4>${venues[i].name}</h4>
 				        <div class="weather-forecast">
-			            	<img style="background:red" src="${venues[i].categories[0].icon.prefix}32${venues[i].categories[0].icon.suffix}" class="weather-icon" /> 
+			            	<img style="background:red" src="${icon}" class="weather-icon" /> 
 			            	<small>${venues[i].categories[0].name}</small>
 				        </div>
 				        <div class="time">

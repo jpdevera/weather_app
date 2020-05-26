@@ -37,7 +37,7 @@ $title = 'Weather Application';
   </head>
 
   <body>
-
+    <div class="modal"><!-- Place at bottom of page --></div> <!-- use in loading -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">

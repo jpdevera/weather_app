@@ -49,8 +49,20 @@ $(document).ready(function(){
 * contruct html from the search city 
 * @param json data from api response
 */
-setWeatherInformation = (data) =>
+setWeatherInformation = async (result) =>
 {
+
+	// Promise the data
+	let promise = new Promise(function(resolved, rejected){
+		if( result ){
+			resolved(result)
+		}else{
+			rejected(result);
+		}
+	});
+
+	// icon image size (32, 44, 64, and 88)
+	let data = await promise;
 	$(".weather-informations").html("");
 	let html = "";
 	let li = "";
@@ -62,6 +74,11 @@ setWeatherInformation = (data) =>
 			let date = convertDate(dt_txt[0])
 			let time = convertTime(dt_txt[1]);
 			let description = upperCaseWords(info.weather[0].description);
+			// check if icon already loaded
+			let icon = "";
+			if($.isEmptyObject(venues[i].categories[0].icon) != true){
+				icon = `http://openweathermap.org/img/w/${info.weather[0].icon}.png`;
+			}
 			html +=  `
 			  	<div class="col-sm-3">
 		         	<div class="report-container">
@@ -71,7 +88,7 @@ setWeatherInformation = (data) =>
 				            <div class='weather-description'>${description}</div>
 				        </div>
 				        <div class="weather-forecast">
-				            <img src="http://openweathermap.org/img/w/${info.weather[0].icon}.png" class="weather-icon" /> 
+				            <img src="${icon}" class="weather-icon" /> 
 				            	${info.main.temp}&deg;C
 				        </div>
 				        <div class="time">
@@ -84,7 +101,6 @@ setWeatherInformation = (data) =>
 
 		}
 		$(".main-weather .weather-informations").append(html);
-		// $(".nav-sidebar").append(li)
 	}
 }
 
