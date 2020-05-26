@@ -76,7 +76,7 @@ setWeatherInformation = async (result) =>
 			let description = upperCaseWords(info.weather[0].description);
 			// check if icon already loaded
 			let icon = "";
-			if($.isEmptyObject(venues[i].categories[0].icon) != true){
+			if($.isEmptyObject(info.weather[0].icon) != true){
 				icon = `http://openweathermap.org/img/w/${info.weather[0].icon}.png`;
 			}
 			html +=  `
